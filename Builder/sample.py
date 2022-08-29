@@ -1,6 +1,10 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
+<<<<<<< HEAD
 from typing import Any, List
+=======
+from typing import Any
+>>>>>>> c71abf046f46f40cd78bd14d2b904218668cb3b1
 
 
 class Builder(ABC):
@@ -102,8 +106,13 @@ class Director:
     optional, since the client can control builders directly.
     """
 
+<<<<<<< HEAD
     def __init__(self, builder: Builder) -> None:
         self._builder = builder
+=======
+    def __init__(self) -> None:
+        self._builder = None
+>>>>>>> c71abf046f46f40cd78bd14d2b904218668cb3b1
 
     @property
     def builder(self) -> Builder:
@@ -133,6 +142,7 @@ class Director:
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     alpha_director = Director(ConcreteBuilder1())
     alpha_director.build_full_featured_product()
     alpha_director._builder.product.list_parts()
@@ -144,3 +154,32 @@ if __name__ == "__main__":
     
     
     
+=======
+    """
+    The client code creates a builder object, passes it to the director and then
+    initiates the construction process. The end result is retrieved from the
+    builder object.
+    """
+
+    director = Director()
+    builder = ConcreteBuilder1()
+    director.builder = builder
+
+    print("Standard basic product: ")
+    director.build_minimal_viable_product()
+    builder.product.list_parts()
+
+    print("\n")
+
+    print("Standard full featured product: ")
+    director.build_full_featured_product()
+    builder.product.list_parts()
+
+    print("\n")
+
+    # Remember, the Builder pattern can be used without a Director class.
+    print("Custom product: ")
+    builder.produce_part_a()
+    builder.produce_part_b()
+    builder.product.list_parts()
+>>>>>>> c71abf046f46f40cd78bd14d2b904218668cb3b1
